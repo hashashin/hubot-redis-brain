@@ -38,7 +38,7 @@ module.exports = (robot) ->
   client = if info.auth then Redis.createClient(info.port, info.hostname, {no_ready_check: true}) else Redis.createClient(info.port, info.hostname)
   prefix = info.path?.replace('/', '') or 'hubot'
 
-  robot.brain.setAutoSave false
+  robot.brain.setAutoSave true
 
   getData = ->
     client.get "#{prefix}:storage", (err, reply) ->
